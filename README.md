@@ -11,4 +11,5 @@ An oasis represents a human exploitation of specific geographic conditions that 
 
 #### Solution Approach
 The literature on agriculture and hydrology provides information on four critical geographic conditions (illustrated below). Together with other geographic features from various datasources, I use gradient boosting to create a prediction of the oases locations. Specifically, I use a K-fold cross validation algorithm, where *K* is equal to the number of provinces in Morocco, such that a out-of-sample prediction is constructed for every province, using the remaining provinces as training data.
-![grafik](https://github.com/user-attachments/assets/60011aec-390c-4692-b786-50f7f5c9fe6b)
+![grafik](https://github.com/user-attachments/assets/b65df6d4-5802-41b5-a64d-f729516ba78b)
+
