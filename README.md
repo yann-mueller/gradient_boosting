@@ -44,8 +44,41 @@ The negative gradient becomes:
 where *σ(F)* is the logistic (sigmoid) function.
 
 
-An oasis represents a human exploitation of specific geographic conditions that allow for the cultivation of water in (semi-)arid environments. In order to be used as instrumental variable and predict modern time economic activity (<a href="https://github.com/yann-mueller/oases_market_potential" target="_blank" rel="noopener noreferrer">view academic project outline for more information</a>), it is necessary to exploit only the variation stemming from locational fundamentals but not human choices in the prediction.
-
 #### Features Overview
-The literature on agriculture and hydrology provides information on four critical geographic conditions that are necessary for the cultivation of an oasis (illustrated below). Together with other geographic features from various datasources, I use gradient boosting to create a prediction of the oases locations. Specifically, I use a K-fold cross validation algorithm, where *K* is equal to the number of provinces in Morocco, such that a out-of-sample prediction is constructed for every province, using the remaining provinces as training data.
+An oasis represents a human exploitation of specific geographic conditions that allow for the cultivation of water in (semi-)arid environments. The literature on agriculture and hydrology provides information on four critical geographic conditions that are necessary for the cultivation of an oasis (illustrated below). Together with other geographic features from various datasources, we have a total of about 300 features, including information on neighboring grid cells.
 ![grafik](https://github.com/user-attachments/assets/b65df6d4-5802-41b5-a64d-f729516ba78b)
+
+
+### XGBoost: Regularized Boosting
+XGBoost extends basic gradient boosting by:
+- Using **second-order derivatives** (Newton boosting) for more efficient optimization.
+- Adding **regularization** to the objective:
+
+![grafik](https://github.com/user-attachments/assets/dcf39f42-83f8-460c-8420-1ebc7922caa3)
+
+*T*: number of leaves,
+
+*w*<sub>*j*</sub>​: score on leaf *j*,
+
+*γ,λ*: regularization parameters.
+
+
+### Spatial Cross-Validation: Leave-One-Province-Out
+To evaluate model performance and avoid overfitting, I implemented a custom K-fold cross-validation strategy, where each fold corresponds to one province (out of 69 provinces in Morocco). This is especially important in geospatial contexts, where nearby observations can be highly correlated — a problem known as spatial autocorrelation. For each fold:
+- One province is held out entirely as the test set.
+- The model is trained on data from all other provinces.
+- Predictions are made on the held-out province.
+- The error is calculated and stored.
+- The predictions are also saved for building the full map later.
+
+### Predictions
+
+![grafik](https://github.com/user-attachments/assets/61766514-8124-48da-9974-d7b4b25aa1f0)
+![grafik](https://github.com/user-attachments/assets/b1fe0698-67e3-418d-94a8-2ffbc375d17a)
+
+
+
+### Notes: Smoothed Oasis Probability Map (Density Map)
+After generating predictions for each fine-grained grid cell using the trained gradient boosting model, I created a density-based probability surface to make the spatial patterns easier to interpret. The raw model predictions are made at a very fine spatial resolution — often resulting in a pixelated map that's difficult to interpret, especially when zoomed out. While each prediction is informative on its own, we’re often more interested in regional trends and hotspots of high probability, not individual grid cells. To address this, I generated a smoothed probability surface using kernel density estimation (KDE), which estimates the probability of encountering an oasis across space.
+
+
