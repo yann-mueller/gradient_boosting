@@ -17,7 +17,7 @@ Where:
 - *F<sub>m</sub>(x)* is the boosted model at iteration *m*
 - *h<sub>m</sub>(x)* is the new base learner (tree) added at step *m*
 - *ν* is the learning rate (step size)
-- *L(y,ŷ)* is the loss function
+- *L(y<sub>i/sub>,γ)* is the loss function
 - *y*<sub>*i*</sub> is the true label for observation *i*
 
 #### Optimization via Gradient Descent
