@@ -10,6 +10,7 @@ Gradient Boosting builds a predictive model in an additive, stage-wise fashion, 
 
 #### Model
 We aim to learn a function *F(x)* that maps features *x* to predictions *ŷ*, by sequentially adding base learners (e.g. decision trees):
+
 ![grafik](https://github.com/user-attachments/assets/5164e943-4574-4263-b5ef-0bdd3f5f3952)
 
 Where:
