@@ -86,4 +86,11 @@ To evaluate model performance and avoid overfitting, I implemented a custom K-fo
 ### Notes: Smoothed Oasis Probability Map (Density Map)
 After generating predictions for each fine-grained grid cell using the trained gradient boosting model, I created a density-based probability surface to make the spatial patterns easier to interpret. The raw model predictions are made at a very fine spatial resolution — often resulting in a pixelated map that's difficult to interpret, especially when zoomed out. While each prediction is informative on its own, we’re often more interested in regional trends and hotspots of high probability, not individual grid cells. To address this, I generated a smoothed probability surface using kernel density estimation (KDE), which estimates the probability of encountering an oasis across space.
 
+### Conclusion: Model Performance
+The predictions from the XGBoost model perform quite well overall. In provinces without any oases, the algorithm reliably assigns near-zero probabilities to almost all grid cells, demonstrating strong precision in these cases.
 
+In provinces where oases are present, the model successfully identifies many oasis clusters, accurately assigning high probabilities to the correct regions. False positives—areas predicted to contain oases where none actually exist—are rare, which further supports the model’s robustness.
+
+That said, some oasis clusters are not well captured by the algorithm. This likely reflects the fact that while geographic features explain part of the variation in oasis locations, they don’t capture all of it. In particular, **second-nature geography**—that is, human settlement and land use decisions—is not included in the model and may play an important role in determining oasis presence.
+
+For the purposes of this research project, however, this level of predictive accuracy is sufficient. The goal is not perfect prediction, but rather to exploit the variation in oasis presence that can be explained by geographic features to construct a valid **instrumental variable**.
