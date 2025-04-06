@@ -14,8 +14,8 @@ We aim to learn a function *F(x)* that maps features *x* to predictions *ŷ*, by
 ![grafik](https://github.com/user-attachments/assets/5164e943-4574-4263-b5ef-0bdd3f5f3952)
 
 Where:
-- *F<sub>m</sub>(x)* is the boosted model at iteration mm
-- *h<sub>m</sub>(x)* is the new base learner (tree) added at step mm
+- *F<sub>m</sub>(x)* is the boosted model at iteration *m*
+- *h<sub>m</sub>(x)* is the new base learner (tree) added at step *m*
 - *ν* is the learning rate (step size)
 - *L(y,ŷ)* is the loss function
 - *y*<sub>*i*</sub> is the true label for observation *i*
