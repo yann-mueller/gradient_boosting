@@ -69,8 +69,8 @@ for (fold in 1:length(provinces)) {
   cat(paste("Province", fold, "test-error =", round(err, 4), "\n"))
 }
 
-save(prediction_data, file = "output/prediction_data.RData")
-load("output/prediction_data.RData")
+#save(prediction_data, file = "output/prediction_data.RData")
+#load("output/prediction_data.RData")
 
 
 ### Density Map
