@@ -71,10 +71,15 @@ To evaluate model performance and avoid overfitting, I implemented a custom K-fo
 - The error is calculated and stored.
 - The predictions are also saved for building the full map later.
 
-### Predictions
+### Predictions (Oasis Provinces)
 
-![grafik](https://github.com/user-attachments/assets/61766514-8124-48da-9974-d7b4b25aa1f0)
-![grafik](https://github.com/user-attachments/assets/b1fe0698-67e3-418d-94a8-2ffbc375d17a)
+![grafik](https://github.com/user-attachments/assets/5354882e-d00b-443c-a583-2671185c16f3)
+
+
+### Predictions (Non-Oasis Provinces)
+
+![grafik](https://github.com/user-attachments/assets/943fdfe7-c799-4af5-9e0c-e6e370f64358)
+
 
 
 
