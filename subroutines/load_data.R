@@ -13,7 +13,7 @@ library(FNN)
 
 ## Spatial Data
 #save(prediction_data, file = "input/spatial_data.RData")
-load("input/spatial_data.RData")
+load("input/spatial_data_reduced.RData")
 
 # Transform Factor Columns into Dummy Columns
 prediction_data$texture <- as.factor(prediction_data$texture)
